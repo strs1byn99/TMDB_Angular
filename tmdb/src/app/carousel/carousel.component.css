@@ -1,0 +1,75 @@
+.bg {
+    padding: 2rem 7.5%; 
+}
+.bg-mobile {
+    padding: 1rem 0rem;
+}
+
+.slide-img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    object-position: 100% 0;
+}
+.slide-img-mobile {
+    width: 100%;
+    height: 25vh;
+    object-fit: cover;
+    object-position: 100% 0;
+}
+
+.hide-indicators ::ng-deep .carousel-indicators {
+    display: none;
+}
+
+:host ::ng-deep .carousel-control-prev {
+    width: 7%;
+}
+:host ::ng-deep .carousel-control-next {
+    width: 7%;
+}
+
+.item {
+    position: relative;
+}
+.overlay {
+    position: absolute; 
+    bottom: 0; 
+    background: linear-gradient(to top, black, rgba(23, 23, 23, 0)); 
+    width: 100%;
+    display: none;
+    color: white;
+    width: 100%;
+    height: 30%;
+    transform: scale(1.1);
+}
+.overlay-mobile {
+    position: absolute; 
+    bottom: 0; 
+    background: linear-gradient(to top, black, rgba(23, 23, 23, 0)); 
+    width: 100%;
+    display: block;
+    color: white;
+    width: 100%;
+    height: 30%;
+    transform: none;
+}
+
+.overlay-span {
+    position: absolute;
+    bottom: 0;
+    font-size: 17px;
+    margin: 0% 5%; 
+    padding: 3%;
+}
+  
+img:hover + .overlay {
+    display: block;
+    pointer-events: none;
+}
+
+img:hover {
+    transform: scale(1.1);
+    transition: transform .1s;
+}
+

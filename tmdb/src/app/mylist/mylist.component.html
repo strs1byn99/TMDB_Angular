@@ -1,0 +1,32 @@
+<div class="bg">
+    <div [className]="contentClass">
+        <div class="no-item" *ngIf="mylist.length == 0">
+            No items found in Watchlist.
+        </div>
+
+        <div *ngIf="mylist.length > 0">
+            <div class="headline">My WatchList</div>
+            <div class="wrapper">
+                <div *ngFor="let each of mylist; index as i" [className]="itemClass">
+                    <img src="{{each.img}}" routerLink="/watch/{{each.type}}/{{each.id}}"
+                       
+                       id="{{'img'+i}}"
+                       #imgs
+                        />
+                    <div [className]="overlayClass"  (mouseover)="mouseOver(i)"
+                    (mouseleave)="mouseLeave(i)" #overlays id="{{'overlay'+i}}"
+                    routerLink="/watch/{{each.type}}/{{each.id}}" >
+                        <span class="overlay-span">{{each.title}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+        <span class="text-muted">Powered by TMDB. Designed by Yash, Naureen, Purvam and Samipya. Developed by Perry.</span>
+        </div>
+    </footer>
+</div>
+
+

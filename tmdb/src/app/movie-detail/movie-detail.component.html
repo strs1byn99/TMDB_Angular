@@ -1,0 +1,166 @@
+<div [className]="bgClass">
+    <div [className]="contentClass">
+        <div class="video" *ngIf="video">
+            <youtube-player 
+                videoId="{{video.link}}" 
+                suggestedQuality="highres" 
+                [height]="youtubeHeight"
+                [width]="youtubeWidth"
+                [startSeconds]=""
+                [endSeconds]="">
+            </youtube-player>
+        </div>
+        <div [className]="textClass" *ngIf="details">
+            <div class="text-title">{{details.title}}</div>
+            <div class="text-tag">{{details.tagline}}</div>
+            <div class="text-info1">
+                {{details.year}} | ★ {{details.vote}} | {{details.runtime}}
+            </div>
+            <div class="text-info2">
+                <div>Genres: <span>{{details.genres}}</span></div>
+                <div>Spoken languages: <span>{{details.spoken_languages}}</span></div>
+            </div>
+            <div class="text-button">
+                <button type="button" class="btn btn-primary" (click)="addOrRemove()"
+                    (click)="changeSuccessMessage()" >
+                    {{buttonText}}
+                </button>
+                <ngb-alert #selfClosingAlert *ngIf="successMessage" [type]="alertType" (closed)="successMessage = ''">
+                    {{ successMessage }}
+                </ngb-alert>
+            </div>
+        </div>
+    </div>
+    <div class="desc" *ngIf="details">
+        <div class="headline">Description</div>
+        <div class="desc-text">{{details.overview}}</div>
+    </div>
+    <div class="share">
+        <div class="headline" >Share</div>
+        <a class="twitter-share-button" 
+            target="_blank"
+            (click)="shareOnTwitter(details.title, video.link)"
+            href="{{twitter_text}}"
+        ><i class="fab fa-twitter"></i></a>
+        <a target="_blank"
+            href="{{facebook_text}}" 
+            class="fb-xfbml-parse-ignore"
+            (click)="shareOnFacebook(video.link)">
+        <i class="fab fa-facebook-square" style="color: blue;"></i>
+        </a>
+    </div>
+    <div *ngIf="casts">
+    <div class="cast" *ngIf="casts.length > 0">
+        <div class="headline-large">Full Cast and Crew</div>
+        <div class="d-flex flex-row flex-nowrap cast-box" >
+            <div *ngFor="let cast of casts">
+                <div class="card cast-card" (click)="getCastDetail(cast.id)" ngbAutofocus (click)="openModal(longContent)">
+                    <img class="card-img-top" src="{{cast.img}}">
+                    <div class=" card-text flex-fill ">
+                        <div class="cast-name real">{{cast.name}}</div>
+                        <div style="font-weight: bold;">AS</div>
+                        <div class="cast-name char">{{cast.character}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div *ngIf="reviews">
+    <div class="review" *ngIf="reviews.length > 0">
+        <div class="headline-large">Reviews <span>{{reviews.length}}</span> </div>
+        <div class="card" *ngFor="let review of reviews">
+        <div class="review-card" [className]="reviewCardClass">
+            <div [className]="reviewCardImgClass">
+                <img src="{{review.avatar_path}}" class="review-card-img" />
+            </div>
+            <div class="card-body">
+                <div class="card-title row">
+                    <div class="card-title-text">A review created by {{review.author}} </div>
+                    <div class="card-vote">★ {{review.rating}}</div>
+                </div>
+                <div class="card-subtitle">Written by {{review.author}} on 
+                    {{convertDate(review.created_at)}}</div>
+                <p class="card-text">{{review.content}}</p>
+                <a href="{{review.url}}" target="_blank" 
+                    style="color: blue; text-decoration: underline;">
+                Read the rest</a>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div *ngIf="reccIds">
+    <div class="recc" *ngIf="reccIds.length > 0">
+        <div class="headline-large">
+        {{type === "movie"? "Recommended Movies" : "Recommended TV Shows"}}
+        </div>
+        <app-card-carousel 
+            [type]="types" 
+            [images]="reccImages" 
+            [ids]="reccIds" 
+            [titles]="reccTitles"
+        ></app-card-carousel>
+    </div>
+    </div>
+    <div *ngIf="simIds">
+    <div class="sim" *ngIf="simIds.length > 0">
+        <div class="headline-large">
+        {{type === "movie"? "Similar Movies" : "Similar TV Shows"}}
+        </div>
+        <app-card-carousel 
+            [type]="types" 
+            [images]="simImages" 
+            [ids]="simIds" 
+            [titles]="simTitles"
+        ></app-card-carousel>
+    </div>
+    </div>
+
+
+<ng-template #longContent let-modal>
+  <div class="modal-header" *ngIf="person">
+    <h4 class="modal-title">{{person.name}}</h4>
+    <button type="button" ngbAutofocus class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" *ngIf="person" style="position: relative;" >
+    <div [className]="modalInfoClass" >
+        <img src="{{person.img}}" [className]="modalImgClass" />
+        <p [className]="modalTextClass">
+            <span *ngIf="person.birthday">Birth: {{person.birthday}} <br></span>
+            <span *ngIf="person.birthplace">Birth Place: {{person.birthplace}} <br></span>
+            <span *ngIf="person.gender">Gender: {{person.gender}} <br></span>
+            <span *ngIf="person.homepage">Website: <a href="{{person.homepage}}" target="_blank">
+                {{person.homepage}}</a> <br>
+            </span>
+            <span *ngIf="person.known_for_department">Known for: {{person.known_for_department}} <br></span>
+            <span *ngIf="person.also_known_as">Also Known as: {{person.also_known_as}} <br></span>
+            <a href="{{person_imdb}}" target="_blank" *ngIf="person_imdb" ngbPopover="Visit IMDB">
+                <i class="fab fa-imdb" style="color: #f0cd30;" ></i>
+            </a>
+            <a href="{{person_ig}}" target="_blank" *ngIf="person_ig" ngbPopover="Visit Instagram">
+                <i class="fab fa-instagram" style="color: purple;"></i>
+            </a>
+            <a href="{{person_fb}}" target="_blank" *ngIf="person_fb" ngbPopover="Visit Facebook">
+                <i class="fab fa-facebook-square" style="color: blue;"></i>
+            </a>
+            <a href="{{person_tt}}" target="_blank" *ngIf="person_tt" ngbPopover="Visit Twitter" >
+                <i class="fab fa-twitter" style="color: #1DA1F2;"></i>
+            </a>
+        </p>
+        
+    </div>
+    <div class="modal-bio" *ngIf="person.biography">
+        <h3>Biography</h3>
+        <span *ngIf="person.biography">{{person.biography}}</span>
+    </div>
+  </div>
+</ng-template>
+</div>
+<footer class="footer">
+    <div class="container">
+    <span class="text-muted">Powered by TMDB. Designed by Yash, Naureen, Purvam and Samipya. Developed by Perry.</span>
+    </div>
+</footer>

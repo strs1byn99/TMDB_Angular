@@ -1,0 +1,139 @@
+.bg {
+    margin: 0 auto;
+}
+
+.box {
+    /* padding: 0 5%; */
+    /* for recc and sim tv/mvs should be padding: 0 0; */
+    /* need a variable to inject in style */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+::ng-deep ngb-carousel:focus {
+    outline: none;
+}
+
+:host ::ng-deep .carousel-control-prev {
+    left: 0;
+    width: 5%;
+    transform: translateY(-1.5rem);
+}
+
+:host ::ng-deep .carousel-control-next {
+    right: 0;
+    width: 5%;
+    transform: translateY(-1.5rem);
+}
+
+.slide-img {
+    width: 100%;
+    margin-top: 8%;
+}
+.item {
+    margin: 0 1%;
+    width: 13%;
+    height: 95%;
+    position: relative;
+    padding-bottom: 4rem;
+}
+.item-mobile {
+    margin: 0 1%;
+    height: 95%;
+    position: relative;
+    padding-bottom: 4rem;
+    width: 75%;
+}
+.item:hover, .item:focus {
+    outline: none;
+}
+.item-mobile:hover, .item-mobile:focus {
+    outline: none;
+}
+
+.overlay {
+    position: absolute; 
+    bottom: 0; 
+    /* background: linear-gradient(to top, black, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));  */
+    display: none;
+    color: white;
+    left: 0px;
+    right: 0px;
+    height: 100%;
+    transform: scale(1.1);
+    margin-bottom: 4rem;
+    transition: transform .1s;
+    /* margin-top: 15%; */
+}
+.overlay-mobile {
+    position: absolute; 
+    bottom: 0; 
+    /* background: linear-gradient(to top, black, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));  */
+    display: block;
+    color: white;
+    left: 0px;
+    right: 0px;
+    height: 85%;
+    margin-bottom: 4rem;
+}
+.overlay:focus, .overlay:hover {
+    outline: none;
+}
+.overlay-mobile:focus, .overlay:hover {
+    outline: none;
+}
+
+
+.overlay span {
+    display: block;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 8%;
+    padding-top: 30%;
+    font-size: 15px;
+    background: linear-gradient(to top, black, rgba(0,0,0,.9), rgba(0,0,0,0)); 
+}
+
+.overlay-span {
+    display: block;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 8%;
+    font-size: 15px;
+    padding-top: 30%;
+    background: linear-gradient(to top, black, rgba(0,0,0,.9), rgba(0,0,0,0));
+}
+  
+img:hover + .overlay {
+    display: block;
+    pointer-events: none;
+}
+
+img:hover {
+    transform: scale(1.1);
+    transition: transform .1s;
+    cursor: pointer;
+    outline: none;
+}
+
+img:focus {
+    outline: none;
+}
+
+.hide-indicators ::ng-deep .carousel-indicators {
+    display: none;
+}
+.hide-arrow ::ng-deep .carousel-control-prev {
+    display: none;
+}
+.hide-arrow ::ng-deep .carousel-control-next {
+    display: none;
+}
+
+
+
+
+

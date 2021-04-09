@@ -1,0 +1,14 @@
+<div class="bg" [className]='mobileClass' >
+    <ngb-carousel #carousel [interval]="5000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)">
+    <ng-template ngbSlide *ngFor="let img of images; index as i">
+        <a routerLink="/watch/movie/{{ids[i]}}">
+        <div class="picsum-img-wrapper item">
+            <img [className]="imgClass" [src]="img">
+            <div [className]="overlayClass" >
+                <span class="overlay-span">{{titles[i]}}</span>
+            </div>
+        </div>
+        </a>
+    </ng-template>
+    </ngb-carousel>
+</div>

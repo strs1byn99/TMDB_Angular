@@ -1,0 +1,58 @@
+.background {
+    /* background-color: #070D2f; */
+}
+
+.home-not-selected {
+    color: rgba(255, 255, 255, .5) !important;
+}
+.home-not-selected:hover {
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.navbar {
+    padding: .5em 3em;
+    background-color: rgb(6,12,42);
+}
+
+.nav-link {
+    float: right;
+}
+.nav-link:focus {
+    color: rgba(255, 255, 255, 1) !important;
+}
+
+.navbar-toggler {
+    color: aliceblue;
+}
+
+.form-control {
+    background-color: rgb(6,12,42);
+    width: 80%;
+    outline: none;
+    border-radius: 0%;
+    border: #021b45;
+    border-bottom: 2px solid white;
+    color: white;
+}
+
+::ng-deep .dropdown-menu {
+    /* padding: 0 !important; */
+    background-color: #070D2f;
+    color: white;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+
+::ng-deep .dropdown-item {
+    padding: 0.25rem 0.5rem;
+    font-size: 85%;
+    color: white;
+}
+
+.search-img {
+    width: 3rem;
+}
+.search-title {
+    padding: 0 1rem;
+    padding-right: 0;
+}

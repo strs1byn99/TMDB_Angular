@@ -1,0 +1,57 @@
+<div class="bg" [className]="onePageStyle">
+<div *ngIf="!isMobile">
+    <ngb-carousel #carousel [interval]="0" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)">
+    <ng-template ngbSlide *ngFor="let img of splited_imgs; index as i">
+        <div class="box">
+            <div class="item">
+                <img class="slide-img" [src]="img[0]" 
+                    routerLink="/watch/{{splited_types[i][0]}}/{{splited_ids[i][0]}}">
+                <div class="overlay" ><span>{{splited_titles[i][0]}}</span></div>
+            </div>
+            <div class="item">
+                <img class="slide-img" [src]="img[1]" 
+                    routerLink="/watch/{{splited_types[i][1]}}/{{splited_ids[i][1]}}" >
+                <div class="overlay" ><span>{{splited_titles[i][1]}}</span></div>
+            </div>
+            <div class="item">
+                <img class="slide-img" [src]="img[2]" 
+                    routerLink="/watch/{{splited_types[i][2]}}/{{splited_ids[i][2]}}" >
+                <div class="overlay" ><span>{{splited_titles[i][2]}}</span></div>
+            </div>
+            <div class="item">
+                <img class="slide-img" [src]="img[3]" 
+                    routerLink="/watch/{{splited_types[i][3]}}/{{splited_ids[i][3]}}" >
+                <div class="overlay" ><span>{{splited_titles[i][3]}}</span></div>
+            </div>
+            <div class="item">
+                <img class="slide-img" [src]="img[4]" 
+                    routerLink="/watch/{{splited_types[i][4]}}/{{splited_ids[i][4]}}">
+                <div class="overlay" ><span>{{splited_titles[i][4]}}</span></div>
+            </div>
+            <div class="item">
+                <img class="slide-img" [src]="img[5]" 
+                    routerLink="/watch/{{splited_types[i][5]}}/{{splited_ids[i][5]}}" >
+                <div class="overlay" ><span>{{splited_titles[i][5]}}</span></div>
+            </div>
+        </div>
+    </ng-template>
+    </ngb-carousel>
+</div>
+<div *ngIf="isMobile">
+    <ngb-carousel #carousel [interval]="0" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)">
+    <ng-template ngbSlide *ngFor="let img of full_imgs; index as i">
+        <div class="box">
+            <div class="item-mobile">
+                <img class="slide-img" [src]="img" #imgs >
+                <div [className]="overlayClass" (mouseover)="mouseOver(i)" (mouseleave)="mouseLeave(i)"
+                    #overlays
+                    routerLink="/watch/{{full_types[i]}}/{{full_ids[i]}}" >
+                    <span class="overlay-span">{{full_titles[i]}}</span>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    </ngb-carousel>
+</div>
+    
+</div>

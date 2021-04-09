@@ -1,0 +1,88 @@
+<div class="bg" [style.padding]="(isMobile | async)?.matches? '0 5%' : '0 8%'">
+    <div *ngIf="playingIds">
+    <div class="top-slide" *ngIf="playingIds.length > 0">
+        <app-carousel 
+            [images]="playingImages" 
+            [ids]="playingIds" 
+            [titles]="playingTitles"
+            [posters]="playingPosters">
+        </app-carousel>
+    </div></div>
+    <div *ngIf="CWIds">
+    <div class="card-carousel" *ngIf="CWIds.length > 0">
+        <div class="title">Continue Watching</div>
+        <app-card-carousel 
+            [type]="CWTypes"
+            [images]="CWImages" 
+            [ids]="CWIds" 
+            [titles]="CWTitles">
+        </app-card-carousel>
+    </div></div>
+    <div *ngIf="popularMvIds">
+    <div class="card-carousel" *ngIf="popularMvIds.length > 0">
+        <div class="title">Popular Movies</div>
+        <app-card-carousel 
+            [type]="mvTypes" 
+            [images]="popularMvImages" 
+            [ids]="popularMvIds" 
+            [titles]="popularMvTitles">
+        </app-card-carousel>
+    </div></div>
+    <div *ngIf="topMvIds">
+    <div class="card-carousel" *ngIf="topMvIds.length > 0">
+        <div class="title">Top Rated Movies</div>
+        <app-card-carousel 
+            [type]="mvTypes" 
+            [images]="topMvImages" 
+            [ids]="topMvIds" 
+            [titles]="topMvTitles">
+        </app-card-carousel>
+    </div></div>
+    <div *ngIf="trendingMvIds">
+    <div class="card-carousel" *ngIf="trendingMvIds.length > 0">
+        <div class="title">Trending Movies</div>
+        <app-card-carousel 
+            [type]="mvTypes" 
+            [images]="trendingMvImages" 
+            [ids]="trendingMvIds" 
+            [titles]="trendingMvTitles">
+        </app-card-carousel>
+    </div></div>
+    <div *ngIf="popularTvIds">
+    <div class="card-carousel" *ngIf="popularTvIds.length > 0">
+        <div class="title">Popular TV Shows</div>
+        <app-card-carousel 
+            [type]="tvTypes" 
+            [images]="popularTvImages" 
+            [ids]="popularTvIds" 
+            [titles]="popularTvTitles">
+        </app-card-carousel>
+    </div></div>
+    <div *ngIf="topTvIds">
+    <div class="card-carousel" *ngIf="topTvIds.length > 0">
+        <div class="title">Top Rated TV Shows</div>
+        <app-card-carousel 
+            [type]="tvTypes" 
+            [images]="topTvImages" 
+            [ids]="topTvIds" 
+            [titles]="topTvTitles">
+        </app-card-carousel>
+    </div></div>
+    <div *ngIf="trendingTvIds">
+    <div class="card-carousel" *ngIf="trendingTvIds.length > 0">
+        <div class="title">Trending TV Shows</div>
+        <app-card-carousel 
+            [type]="tvTypes" 
+            [images]="trendingTvImages" 
+            [ids]="trendingTvIds" 
+            [titles]="trendingTvTitles">
+        </app-card-carousel>
+    </div></div>
+    <div class="placeholder"></div>
+    
+</div>
+<footer class="footer">
+    <div class="container">
+    <span class="text-muted">Powered by TMDB. Designed by Yash, Naureen, Purvam and Samipya. Developed by Perry.</span>
+    </div>
+</footer>
