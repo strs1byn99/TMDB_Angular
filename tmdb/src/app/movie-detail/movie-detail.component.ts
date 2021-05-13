@@ -180,7 +180,9 @@ export class MovieDetailComponent implements OnInit {
   }
 
   shareOnTwitter(title:any, link:any) {
-    this.twitter_text = `https://twitter.com/intent/tweet?text=Watch ${title}%0A${YOUTUBE_LINK}${link}%0A%23USC %23CSCI571 %23FightOn`
+    var prefix = "https://twitter.com/intent/tweet?text=";
+    var text = `Watch ${title}\n${YOUTUBE_LINK}${link}\n#USC #CSCI571 #FightOn`;
+    this.twitter_text = `${prefix}${encodeURIComponent(text)}`
   }
   shareOnFacebook(link:any) {
     this.facebook_text = `https://www.facebook.com/sharer/sharer.php?u=${YOUTUBE_LINK}${link}`

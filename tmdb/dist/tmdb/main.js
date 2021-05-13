@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/strs1byn99/Desktop/bythemoviedb-gcp/tmdb/src/main.ts */"zUnb");
+module.exports = __webpack_require__(/*! /Users/strs1byn99/Desktop/USC/csci571/TMDB_Angular/tmdb/src/main.ts */"zUnb");
 
 
 /***/ }),
@@ -1899,7 +1899,9 @@ class MovieDetailComponent {
         });
     }
     shareOnTwitter(title, link) {
-        this.twitter_text = `https://twitter.com/intent/tweet?text=Watch ${title}%0A${YOUTUBE_LINK}${link}%0A%23USC %23CSCI571 %23FightOn`;
+        var prefix = "https://twitter.com/intent/tweet?text=";
+        var text = `Watch ${title}\n${YOUTUBE_LINK}${link}\n#USC #CSCI571 #FightOn`;
+        this.twitter_text = `${prefix}${encodeURIComponent(text)}`;
     }
     shareOnFacebook(link) {
         this.facebook_text = `https://www.facebook.com/sharer/sharer.php?u=${YOUTUBE_LINK}${link}`;
